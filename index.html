@@ -124,7 +124,7 @@
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 1fr;
     gap: 80px;
     align-items: center;
     position: relative;
@@ -172,7 +172,7 @@
   .hero-lead {
     font-size: 19px;
     color: var(--text-soft);
-    max-width: 540px;
+    max-width: 680px;
     margin-bottom: 40px;
     line-height: 1.65;
   }
@@ -236,54 +236,6 @@
     font-size: 15px;
     color: var(--navy);
     font-weight: 600;
-  }
-
-  /* ===== PHOTO ===== */
-  .hero-photo-wrap {
-    position: relative;
-    aspect-ratio: 4/5;
-    max-width: 440px;
-    margin-left: auto;
-  }
-  .hero-photo {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-    filter: contrast(1.02) saturate(1.05);
-    position: relative;
-    z-index: 2;
-    box-shadow: var(--shadow-lg);
-  }
-  .photo-frame {
-    position: absolute;
-    inset: -16px -16px 16px 16px;
-    border: 2px solid var(--gold);
-    border-radius: 4px;
-    z-index: 1;
-  }
-  .photo-badge {
-    position: absolute;
-    bottom: -24px; left: -24px;
-    background: var(--navy);
-    color: var(--ivory);
-    padding: 16px 24px;
-    border-radius: 4px;
-    z-index: 3;
-    box-shadow: var(--shadow-md);
-  }
-  .photo-badge .role {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 18px;
-    color: var(--gold);
-    margin-bottom: 2px;
-  }
-  .photo-badge .where {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--ivory);
-    opacity: 0.8;
   }
 
   /* ====== MARQUEE ====== */
@@ -861,7 +813,6 @@
     section { padding: 80px 0; }
     .hero { padding: 120px 0 60px; }
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-    .hero-photo-wrap { max-width: 320px; margin: 0 auto; }
     .hero-meta { gap: 24px; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .exp-item { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
@@ -884,7 +835,6 @@
 
 <body>
 
-<!-- ===== NAV ===== -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="logo">Tahir Mehmood<span class="dot">.</span></a>
@@ -898,7 +848,6 @@
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
@@ -934,21 +883,10 @@
           </div>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="hero-photo-wrap">
-          <div class="photo-frame"></div>
-          <img src="assets/tahir.jpg" alt="Tahir Mehmood" class="hero-photo" />
-          <div class="photo-badge">
-            <div class="role">Tahir Mehmood</div>
-            <div class="where">AI/ML ENGINEER · NUST</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== MARQUEE ===== -->
 <div class="marquee">
   <div class="marquee-inner">
     <span>PyTorch <span class="star">✦</span> Transformers <span class="star">✦</span> RAG Systems <span class="star">✦</span> LangChain <span class="star">✦</span> FastAPI <span class="star">✦</span> Docker <span class="star">✦</span> NLP <span class="star">✦</span> Federated Learning <span class="star">✦</span> Deep Learning <span class="star">✦</span></span>
@@ -956,7 +894,6 @@
   </div>
 </div>
 
-<!-- ===== ABOUT ===== -->
 <section class="about" id="about">
   <div class="container">
     <div class="section-head reveal">
@@ -993,7 +930,6 @@
   </div>
 </section>
 
-<!-- ===== EXPERIENCE ===== -->
 <section id="experience">
   <div class="container">
     <div class="section-head reveal">
@@ -1046,7 +982,6 @@
   </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
 <section class="skills" id="skills">
   <div class="container">
     <div class="section-head reveal">
@@ -1116,7 +1051,6 @@
   </div>
 </section>
 
-<!-- ===== WORK / PROJECTS ===== -->
 <section id="work">
   <div class="container">
     <div class="section-head reveal">
@@ -1125,7 +1059,6 @@
       <p class="section-intro">A selection of applied research and production systems — from medical AI to legal NLP.</p>
     </div>
 
-    <!-- FEATURED FLAGSHIP PROJECTS -->
     <div class="featured-projects">
 
       <a href="#" class="feat-project span-full reveal">
@@ -1190,7 +1123,6 @@
       </a>
     </div>
 
-    <!-- OTHER REPOS -->
     <div class="other-projects">
       <h3 class="other-head reveal">Additional Open-Source Work</h3>
       <p class="other-sub reveal">Selected from <a href="https://github.com/tahirmehmood23423" target="_blank" style="color:var(--navy);font-weight:600;">22+ public repositories</a> on GitHub.</p>
@@ -1229,7 +1161,6 @@
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
 <section class="contact" id="contact">
   <div class="container">
     <div class="contact-content">
@@ -1267,7 +1198,6 @@
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-inner">
     <div>© 2026 Tahir Mehmood — AI/ML Engineer · Islamabad, Pakistan</div>

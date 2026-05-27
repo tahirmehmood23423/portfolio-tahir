@@ -214,6 +214,16 @@
     background: var(--navy);
     color: var(--ivory);
   }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+  }
+  .btn-gold:hover {
+    background: var(--gold-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
   .btn .arrow { transition: transform 0.2s; }
   .btn:hover .arrow { transform: translateX(3px); }
 
@@ -515,6 +525,16 @@
     box-shadow: var(--shadow-lg);
     border-color: var(--gold);
   }
+
+  /* Special gold border for flagship */
+  .feat-project.flagship {
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 1px rgba(201,169,97,0.2), var(--shadow-md);
+  }
+  .feat-project.flagship:hover {
+    box-shadow: 0 0 0 2px rgba(201,169,97,0.4), var(--shadow-lg);
+  }
+
   .feat-cover {
     aspect-ratio: 16/9;
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -542,6 +562,17 @@
                       linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+
+  /* Flagship cover — richer gradient */
+  .feat-project.flagship .feat-cover {
+    background: linear-gradient(135deg, #061528 0%, #0a2540 40%, #0f3460 100%);
+  }
+  .feat-project.flagship .feat-cover::before {
+    background-image:
+      radial-gradient(circle at 70% 30%, rgba(201,169,97,0.35) 0%, transparent 55%),
+      radial-gradient(circle at 20% 80%, rgba(201,169,97,0.1) 0%, transparent 45%);
+  }
+
   .feat-cover-content {
     position: relative;
     z-index: 1;
@@ -555,6 +586,7 @@
     line-height: 1;
     margin-bottom: 12px;
   }
+  .feat-project.span-full .feat-cover-icon { font-size: 100px; }
   .feat-cover-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -563,12 +595,60 @@
     text-transform: uppercase;
   }
 
+  /* Live badge */
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(22,163,74,0.15);
+    border: 1px solid rgba(22,163,74,0.4);
+    color: #4ade80;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-top: 14px;
+    font-weight: 600;
+  }
+  .live-badge .live-dot {
+    width: 6px; height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* Module progress bar */
+  .module-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .module-pip {
+    height: 4px;
+    border-radius: 2px;
+    flex: 1;
+    background: rgba(201,169,97,0.25);
+    transition: all 0.3s;
+  }
+  .module-pip.done { background: var(--gold); }
+  .module-pip.active { background: rgba(201,169,97,0.6); }
+  .module-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(248,245,239,0.6);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
   .feat-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
   .feat-meta {
     display: flex;
     gap: 10px;
     margin-bottom: 16px;
     flex-wrap: wrap;
+    align-items: center;
   }
   .feat-badge {
     font-family: 'JetBrains Mono', monospace;
@@ -582,6 +662,8 @@
     font-weight: 600;
   }
   .feat-badge.featured { background: var(--navy); color: var(--gold); }
+  .feat-badge.live { background: rgba(22,163,74,0.12); color: #16a34a; }
+  .feat-badge.modules { background: rgba(37,99,235,0.1); color: #2563eb; }
   .feat-title {
     font-family: 'Playfair Display', serif;
     font-size: 26px;
@@ -613,6 +695,13 @@
     border-radius: 3px;
     border: 1px solid var(--border);
   }
+  .feat-links {
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    flex-wrap: wrap;
+  }
   .feat-link {
     color: var(--navy);
     font-weight: 600;
@@ -620,12 +709,48 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    border-top: 1px solid var(--border);
-    padding-top: 16px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .feat-link.secondary {
+    color: var(--text-soft);
+    font-weight: 500;
+    font-size: 13px;
   }
   .feat-link .arrow { transition: transform 0.2s; }
-  .feat-project:hover .feat-link { color: var(--gold); }
+  .feat-project:hover .feat-link:first-child { color: var(--gold); }
   .feat-project:hover .feat-link .arrow { transform: translateX(4px); }
+
+  /* Stats row inside flagship */
+  .flagship-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--ivory);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .fstat {
+    text-align: center;
+  }
+  .fstat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .fstat-num em { font-style: italic; color: var(--gold); }
+  .fstat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-mute);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 
   /* OTHER REPOS LIST */
   .other-projects {
@@ -822,6 +947,7 @@
     .other-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .section-head { margin-bottom: 56px; }
+    .flagship-stats { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 560px) {
     .skills-grid { grid-template-columns: 1fr; }
@@ -829,6 +955,7 @@
     .stat-card { padding: 20px; }
     .stat-num { font-size: 32px; }
     .hero-meta { flex-direction: column; gap: 16px; }
+    .flagship-stats { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -866,6 +993,7 @@
         </p>
         <div class="hero-cta-row">
           <a href="#work" class="btn btn-primary">View Featured Work <span class="arrow">→</span></a>
+          <a href="https://ai-job-application-frontend.vercel.app" class="btn btn-gold" target="_blank">Try AI Job Tracker <span class="arrow">↗</span></a>
           <a href="assets/Resume_Tahir.pdf" class="btn btn-outline" target="_blank">Download Résumé <span class="arrow">↓</span></a>
         </div>
         <div class="hero-meta">
@@ -881,6 +1009,10 @@
             <div class="label">Focus</div>
             <div class="value">NLP · RAG · DL</div>
           </div>
+          <div class="hero-meta-item">
+            <div class="label">Latest Project</div>
+            <div class="value" style="color:var(--gold);">AI Job Tracker · Live ✦</div>
+          </div>
         </div>
       </div>
     </div>
@@ -889,8 +1021,8 @@
 
 <div class="marquee">
   <div class="marquee-inner">
-    <span>PyTorch <span class="star">✦</span> Transformers <span class="star">✦</span> RAG Systems <span class="star">✦</span> LangChain <span class="star">✦</span> FastAPI <span class="star">✦</span> Docker <span class="star">✦</span> NLP <span class="star">✦</span> Federated Learning <span class="star">✦</span> Deep Learning <span class="star">✦</span></span>
-    <span>PyTorch <span class="star">✦</span> Transformers <span class="star">✦</span> RAG Systems <span class="star">✦</span> LangChain <span class="star">✦</span> FastAPI <span class="star">✦</span> Docker <span class="star">✦</span> NLP <span class="star">✦</span> Federated Learning <span class="star">✦</span> Deep Learning <span class="star">✦</span></span>
+    <span>PyTorch <span class="star">✦</span> Transformers <span class="star">✦</span> RAG Systems <span class="star">✦</span> LangChain <span class="star">✦</span> FastAPI <span class="star">✦</span> Docker <span class="star">✦</span> NLP <span class="star">✦</span> Federated Learning <span class="star">✦</span> Deep Learning <span class="star">✦</span> AI Job Tracker <span class="star">✦</span></span>
+    <span>PyTorch <span class="star">✦</span> Transformers <span class="star">✦</span> RAG Systems <span class="star">✦</span> LangChain <span class="star">✦</span> FastAPI <span class="star">✦</span> Docker <span class="star">✦</span> NLP <span class="star">✦</span> Federated Learning <span class="star">✦</span> Deep Learning <span class="star">✦</span> AI Job Tracker <span class="star">✦</span></span>
   </div>
 </div>
 
@@ -903,6 +1035,10 @@
     <div class="about-grid">
       <div class="about-stats reveal">
         <div class="stat-card">
+          <div class="stat-num">5<em>+</em></div>
+          <div class="stat-label">Production modules shipped for the AI Job Application Tracker in 3 weeks</div>
+        </div>
+        <div class="stat-card">
           <div class="stat-num">91<em>%</em></div>
           <div class="stat-label">Accuracy on Parkinson's stage classification (CNN-LSTM-Attention)</div>
         </div>
@@ -911,17 +1047,13 @@
           <div class="stat-label">Legal corpus indexed in production RAG chatbot (LexAI)</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">469</div>
-          <div class="stat-label">Patient subjects in IMU dataset for DL pipeline</div>
-        </div>
-        <div class="stat-card">
           <div class="stat-num">22<em>+</em></div>
           <div class="stat-label">Open-source repositories on GitHub</div>
         </div>
       </div>
       <div class="about-text reveal">
         <p>I build machine learning systems end-to-end — from research notebook to containerized API in production.</p>
-        <p>My focus is on the parts of AI that actually reach users: <strong>NLP pipelines, Transformer-based architectures, and Retrieval-Augmented Generation</strong>. I've shipped a bilingual legal chatbot over a 26GB Pakistani law corpus, classified Parkinson's disease stages from wearable sensor data, and designed federated learning frameworks for privacy-preserving medical AI.</p>
+        <p>My focus is on the parts of AI that actually reach users: <strong>NLP pipelines, Transformer-based architectures, and Retrieval-Augmented Generation</strong>. I've shipped a bilingual legal chatbot over a 26GB Pakistani law corpus, classified Parkinson's disease stages from wearable sensor data, and most recently built the <strong>AI Job Application Tracker</strong> — a full-stack AI product with 5 live modules covering résumé parsing, job matching, résumé tailoring, cover letter generation, and job discovery.</p>
         <p>Currently completing my <strong>MS in Computer Science at NUST</strong>, where I also serve as a <strong>Teaching Assistant for Machine Learning</strong> and a <strong>Coding Fellow at Murabbi</strong>, mentoring undergraduates through hands-on AI projects.</p>
         <p>The thread connecting it all: I care less about the model and more about the system. Anyone can train; far fewer can deploy, monitor, and explain.</p>
         <div class="signature">Tahir Mehmood</div>
@@ -1027,9 +1159,12 @@
         <p>The part most ML projects skip: turning models into systems users can actually call.</p>
         <div class="skill-chips">
           <span class="chip">FastAPI</span>
+          <span class="chip">Next.js</span>
           <span class="chip">Streamlit</span>
           <span class="chip">Docker</span>
           <span class="chip">REST APIs</span>
+          <span class="chip">Hugging Face</span>
+          <span class="chip">Vercel</span>
           <span class="chip">Azure</span>
         </div>
       </div>
@@ -1040,6 +1175,7 @@
         <p>The foundation — clean code, version control, reproducible environments.</p>
         <div class="skill-chips">
           <span class="chip">Python</span>
+          <span class="chip">TypeScript</span>
           <span class="chip">C++</span>
           <span class="chip">SQL</span>
           <span class="chip">Git</span>
@@ -1056,21 +1192,96 @@
     <div class="section-head reveal">
       <span class="section-num">04 — SELECTED WORK</span>
       <h2 class="section-title">Featured <em>projects.</em></h2>
-      <p class="section-intro">A selection of applied research and production systems — from medical AI to legal NLP.</p>
+      <p class="section-intro">Production systems and applied research — from a live AI job application product to medical deep learning.</p>
     </div>
 
     <div class="featured-projects">
 
-      <a href="#" class="feat-project span-full reveal">
+      <!-- ★ #1 FLAGSHIP: AI JOB APPLICATION TRACKER -->
+      <a href="https://ai-job-application-frontend.vercel.app" target="_blank" class="feat-project span-full flagship reveal">
         <div class="feat-cover">
           <div class="feat-cover-content">
-            <div class="feat-cover-icon">⚖</div>
-            <div class="feat-cover-label">FLAGSHIP · BILINGUAL LEGAL RAG SYSTEM</div>
+            <div class="feat-cover-icon">⚙</div>
+            <div class="feat-cover-label">★ FLAGSHIP PRODUCT · LIVE IN PRODUCTION · 5 MODULES SHIPPED</div>
+            <div class="live-badge">
+              <span class="live-dot"></span>
+              LIVE ON VERCEL + HUGGING FACE
+            </div>
+            <div class="module-progress" style="margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto;">
+              <div class="module-pip done"></div>
+              <div class="module-pip done"></div>
+              <div class="module-pip done"></div>
+              <div class="module-pip done"></div>
+              <div class="module-pip done"></div>
+              <div class="module-pip active"></div>
+              <div class="module-pip"></div>
+              <div class="module-pip"></div>
+              <div class="module-pip"></div>
+              <div class="module-pip"></div>
+              <span class="module-label">5 / 10 MODULES</span>
+            </div>
           </div>
         </div>
         <div class="feat-body">
           <div class="feat-meta">
-            <span class="feat-badge featured">★ Flagship Project</span>
+            <span class="feat-badge featured">★ #1 Flagship Product</span>
+            <span class="feat-badge live">● Live in Production</span>
+            <span class="feat-badge modules">5 Modules · 10 Planned</span>
+            <span class="feat-badge">Built in 3 Weeks · May 2026</span>
+          </div>
+          <h3 class="feat-title">AI Job Application Tracker — Full-Stack AI Product</h3>
+
+          <div class="flagship-stats">
+            <div class="fstat">
+              <div class="fstat-num">5</div>
+              <div class="fstat-label">Live Modules</div>
+            </div>
+            <div class="fstat">
+              <div class="fstat-num">74<em>+</em></div>
+              <div class="fstat-label">Tests Passing</div>
+            </div>
+            <div class="fstat">
+              <div class="fstat-num">3<em>k</em></div>
+              <div class="fstat-label">Lines of Code</div>
+            </div>
+            <div class="fstat">
+              <div class="fstat-num">0<em>$</em></div>
+              <div class="fstat-label">Running Cost</div>
+            </div>
+          </div>
+
+          <p class="feat-desc">
+            An end-to-end AI-powered job application assistant — designed, built, and deployed solo in 3 weeks. The product automates the five most time-consuming parts of job hunting:
+            <br><br>
+            <strong>Module 1 — Résumé Parser:</strong> Uploads a PDF/DOCX résumé and returns fully structured JSON — personal info, skills, experience, education, projects, certifications.<br>
+            <strong>Module 2 — Job Matcher:</strong> Two-pass scoring using Gemini embeddings (semantic similarity) + LLM requirement extraction. Returns a 0–100 match score with per-requirement breakdown.<br>
+            <strong>Module 3 — Résumé Tailorer:</strong> Source-bound LLM rewriting — reorders, emphasises, and rewrites existing content for a specific job. Never invents information. Includes ATS compatibility checker.<br>
+            <strong>Module 4 — Cover Letter Generator:</strong> Two-pass pipeline: extract strongest talking points → write 4-paragraph letter in chosen tone (Professional / Conversational / Confident / Enthusiastic).<br>
+            <strong>Module 5 — Job Discovery:</strong> Scrapes LinkedIn and Remotive in parallel, auto-extracts keywords from résumé, scores and ranks jobs. Zero LLM cost — pure keyword matching.
+          </p>
+          <div class="feat-stack">
+            <span>Python · FastAPI</span><span>Next.js · TypeScript</span><span>Google Gemini</span><span>Docker</span><span>Hugging Face</span><span>Vercel</span><span>Pydantic</span><span>httpx</span><span>Pytest</span>
+          </div>
+          <div class="feat-links">
+            <a href="https://ai-job-application-frontend.vercel.app" target="_blank" class="feat-link">Try it live <span class="arrow">↗</span></a>
+            <a href="https://github.com/tahirmehmood23423/AI-Job-Application-Tracker" target="_blank" class="feat-link secondary">Backend repo →</a>
+            <a href="https://github.com/tahirmehmood23423/AI-Job-Application-Frontend" target="_blank" class="feat-link secondary">Frontend repo →</a>
+            <a href="https://tahir283417-resume-parser.hf.space/docs" target="_blank" class="feat-link secondary">API docs →</a>
+          </div>
+        </div>
+      </a>
+
+      <!-- #2: LexAI -->
+      <a href="#" class="feat-project span-full reveal">
+        <div class="feat-cover">
+          <div class="feat-cover-content">
+            <div class="feat-cover-icon">⚖</div>
+            <div class="feat-cover-label">BILINGUAL LEGAL RAG SYSTEM</div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <div class="feat-meta">
+            <span class="feat-badge featured">★ Research Project</span>
             <span class="feat-badge">Production · Sep 2024 – Present</span>
           </div>
           <h3 class="feat-title">LexAI — LLM-Based Legal Chatbot for Pakistani Law</h3>
@@ -1078,10 +1289,13 @@
           <div class="feat-stack">
             <span>PyTorch</span><span>LangChain</span><span>FastAPI</span><span>Docker</span><span>ChromaDB</span><span>Streamlit</span><span>RAG</span>
           </div>
-          <div class="feat-link">View case study <span class="arrow">→</span></div>
+          <div class="feat-links">
+            <a href="#" class="feat-link">View case study <span class="arrow">→</span></a>
+          </div>
         </div>
       </a>
 
+      <!-- #3 & #4: Medical AI -->
       <a href="#" class="feat-project reveal">
         <div class="feat-cover">
           <div class="feat-cover-content">
@@ -1098,7 +1312,9 @@
           <div class="feat-stack">
             <span>PyTorch</span><span>CNN</span><span>LSTM</span><span>Attention</span><span>Embedded</span>
           </div>
-          <div class="feat-link">View details <span class="arrow">→</span></div>
+          <div class="feat-links">
+            <a href="#" class="feat-link">View details <span class="arrow">→</span></a>
+          </div>
         </div>
       </a>
 
@@ -1118,9 +1334,12 @@
           <div class="feat-stack">
             <span>Swin Transformer</span><span>PyTorch</span><span>Federated Learning</span><span>Medical AI</span>
           </div>
-          <div class="feat-link">View details <span class="arrow">→</span></div>
+          <div class="feat-links">
+            <a href="#" class="feat-link">View details <span class="arrow">→</span></a>
+          </div>
         </div>
       </a>
+
     </div>
 
     <div class="other-projects">
